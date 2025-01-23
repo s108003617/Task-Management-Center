@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任務管理系統</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-6">
+    <div class="container mx-auto max-w-5xl">
+        <h1 class="text-4xl font-bold text-center mb-8 text-white drop-shadow-lg">🚀 任務管理中心</h1>
+        
+        <div class="bg-white/20 backdrop-blur-lg rounded-2xl p-6 shadow-2xl">
+            <div class="mb-6 flex space-x-4">
+                <input type="text" id="taskTitle" placeholder="輸入任務標題" 
+                    class="flex-grow p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50">
+                
+                <select id="taskPriority" 
+                    class="p-3 rounded-lg bg-white/20 border-2 border-white/30 text-white">
+                    <option value="low" class="text-green-300">低優先級</option>
+                    <option value="medium" class="text-yellow-300">中優先級</option>
+                    <option value="high" class="text-red-300">高優先級</option>
+                </select>
+                
+                <button id="addTaskBtn" 
+                    class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
+                    新增任務
+                </button>
+            </div>
+
+            <div class="flex mb-6 space-x-4">
+                <select id="filterPriority" class="p-3 rounded-lg bg-white/20 border-2 border-white/30 text-white flex-1">
+                    <option value="">所有優先級</option>
+                    <option value="low">低</option>
+                    <option value="medium">中</option>
+                    <option value="high">高</option>
+                </select>
+                
+                <select id="filterStatus" class="p-3 rounded-lg bg-white/20 border-2 border-white/30 text-white flex-1">
+                    <option value="">所有狀態</option>
+                    <option value="pending">進行中</option>
+                    <option value="completed">已完成</option>
+                </select>
+                
+                <select id="sortMethod" class="p-3 rounded-lg bg-white/20 border-2 border-white/30 text-white flex-1">
+                    <option value="createdAt">建立時間</option>
+                    <option value="priority">優先級</option>
+                    <option value="title">標題</option>
+                </select>
+            </div>
+    </div>
+
+
+    <div id="statistics" class="mt-8 bg-white/20 backdrop-blur-lg rounded-2xl p-6 shadow-2xl text-white">
+      <h2 class="text-2xl font-semibold mb-4 text-center">任務統計</h2>
+      <div class="grid grid-cols-3 gap-4">
+          <div class="text-center">
+              <p class="text-white/70">總任務數</p>
+              <p id="totalTasks" class="text-3xl font-bold">0</p>
+          </div>
+          <div class="text-center">
+              <p class="text-white/70">進行中</p>
+              <p id="pendingTasks" class="text-3xl font-bold">0</p>
+          </div>
+          <div class="text-center">
+              <p class="text-white/70">已完成</p>
+              <p id="completedTasks" class="text-3xl font-bold">0</p>
+          </div>
+      </div>
+
+
+  </div>
+    <div id="taskContainer" class="mt-6 grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+      <!-- 任務卡片將在此渲染 -->
+  </div>
+</div>
+
+   <script src="work.js"></script>
+</body>
+</html>
